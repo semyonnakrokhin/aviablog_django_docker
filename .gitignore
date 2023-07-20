@@ -1,0 +1,18 @@
+# Файлы окружения
+*.env*
+
+# Временные файлы
+*.pyc
+__pycache__/
+
+# IDE
+.idea
+
+# Virtual environment
+venv*/
+env*/
+.venv*/
+*venv/
+*venv*/
+
+help/

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+    .center-image {
+        display: block;
+        margin: 0 auto;
+        max-width: 50%;
+    }
+</style>
+
+{% block content %}
+<!-- Block Content -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/avatar_default.png' %}" class="card-img-top center-image" alt="Avatar" style="max-width: 50%;">
+                <div class="card-body">
+                    <p class="card-text">Username: {{ profile.username }}</p>
+                    <p class="card-text">First Name: {{ profile.first_name }}</p>
+                    <p class="card-text">Last Name: {{ profile.last_name }}</p>
+                    <p class="card-text"><i class="fas fa-plane"></i> Flights: {{ profile.total_flights }}</p>
+                    <p class="card-text"><i class="fas fa-plane-departure"></i> Airlines: {{ profile.total_airlines }}</p>
+                    <p class="card-text"><i class="fas fa-plane-arrival"></i> Aircraft Types: {{ profile.total_aircraft_types }}</p>
+                    <p class="card-text"><i class="fas fa-plane-arrival"></i> Airports Visited: {{ profile.total_airports }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Flight No.</th>
+                    <th>Date</th>
+                    <th>Departure airport (IATA)</th>
+                    <th>Destination airport (IATA)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for flight in flights %}
+                    <tr onclick="location.href='{% url 'flight' flight.slug %}';">
+                        <td>{{ flight.flight.airframe.airline.name }}</td>
+                        <td>{{ flight.flight.flight_number }}</td>
+                        <td>{{ flight.flight.date|date:"d-m-Y" }}</td>
+                        {% for flight_info in flight.flight.flightinfo_set.all %}
+                            {% if flight_info.status == 'Departure' %}
+                                <td>{{ flight_info.airport_code }}</td>
+                            {% endif %}
+                            {% if flight_info.status == 'Arrival' %}
+                                <td>{{ flight_info.airport_code }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

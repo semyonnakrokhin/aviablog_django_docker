@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aviablog</title>
+
+  <!--  Подключение своих стилей-->
+  {% block styles %}{% endblock styles %}
+
+  <!-- Подключение стилей Bootstrap -->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1i6IcT+6P5mZ/xn2dj7ElJRLmOWFM7O" crossorigin="anonymous">-->
+
+  <!-- Подключение CSS-файлов Bootstrap с CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    {% include 'include/header.html' %}
+
+    <br>
+
+    {% block content %}
+    {% endblock content %}
+
+    <br>
+
+    {% include 'include/footer.html' %}
+
+    <!-- Подключение скриптов Bootstrap -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    {% block scripts %}{% endblock scripts %}
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js" integrity="sha512-F6rljxLxMuEZ+WsX9Oa+1MsCmW8V2r5CwaZfK5m5ucPbm8dFgwlAV/A9oId2tNkf/CL8LfZtLz//lBNSN/q3qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+</body>
+
+
+</html>

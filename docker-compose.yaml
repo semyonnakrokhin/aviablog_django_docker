@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+    networks:
+      - semyon-network  
+
+  web:
+    build: ./app
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py loaddata fixture.json
+        python manage.py collectstatic --no-input
+        gunicorn aviablog.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/media
+    expose:
+      - 8000
+    env_file:
+      - ./.env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - semyon-network
+
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+    ports:
+      - 5433:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "aviablog_db", "-U", "semyon" ]
+    networks:
+      - semyon-network
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+networks:
+  semyon-network:
+    driver: bridge

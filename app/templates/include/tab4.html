@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="container-fluid" style="max-width: 50%; margin: 0 auto;">
+      <table class="table table-striped info-table">
+        <thead>
+          <tr>
+            <th colspan="2">Условия вылета</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 40%">
+              {{ form.departure_airport_code.label }}{% if form.departure_airport_code.field.required %}*{% endif %}
+            </td>
+            <td style="width: 60%">{{ form.departure_airport_code }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.departure_gate.label }}{% if form.departure_gate.field.required %}*{% endif %}</td>
+            <td>{{ form.departure_gate }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{ form.departure_is_boarding_bridge.label }}
+              {% if form.departure_is_boarding_bridge.field.required %}*{% endif %}
+            </td>
+            <td>{{ form.departure_is_boarding_bridge }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.departure_schedule_time.label }}{% if form.departure_schedule_time.field.required %}*{% endif %}</td>
+            <td>{{ form.departure_schedule_time }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.departure_actual_time.label }}{% if form.departure_actual_time.field.required %}*{% endif %}</td>
+            <td>{{ form.departure_actual_time }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.departure_runway.label }}{% if form.departure_runway.field.required %}*{% endif %}</td>
+            <td>{{ form.departure_runway }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.departure_metar.label }}{% if form.departure_metar.field.required %}*{% endif %}</td>
+            <td>{{ form.departure_metar }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="container-fluid" style="max-width: 50%; margin: 0 auto;">
+      <table class="table table-striped info-table">
+        <thead>
+          <tr>
+            <th colspan="2">Условия прилета</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{ form.arrival_airport_code.label }}{% if form.arrival_airport_code.field.required %}*{% endif %}
+            </td>
+            <td>{{ form.arrival_airport_code }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.arrival_gate.label }}{% if form.arrival_gate.field.required %}*{% endif %}</td>
+            <td>{{ form.arrival_gate }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{ form.arrival_is_boarding_bridge.label }}
+              {% if form.arrival_is_boarding_bridge.field.required %}*{% endif %}
+            </td>
+            <td>{{ form.arrival_is_boarding_bridge }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.arrival_schedule_time.label }}{% if form.arrival_schedule_time.field.required %}*{% endif %}</td>
+            <td>{{ form.arrival_schedule_time }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.arrival_actual_time.label }}{% if form.arrival_actual_time.field.required %}*{% endif %}</td>
+            <td>{{ form.arrival_actual_time }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.arrival_runway.label }}{% if form.arrival_runway.field.required %}*{% endif %}</td>
+            <td>{{ form.arrival_runway }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.arrival_metar.label }}{% if form.arrival_metar.field.required %}*{% endif %}</td>
+            <td>{{ form.arrival_metar }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

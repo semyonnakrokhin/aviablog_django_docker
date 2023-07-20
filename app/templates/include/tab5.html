@@ -1,0 +1,47 @@
+<!--{% load my_tags %}-->
+
+<!--<div class="border p-3 mb-3">-->
+<!--    <div class="text-center mb-3">-->
+<!--        &lt;!&ndash; Кнопка для добавления нового поля &ndash;&gt;-->
+<!--        <button type="button" class="btn btn-success btn-sm add-field-btn">-->
+<!--            <i class="fas fa-plus-circle"></i>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--    <div id="fields-container">-->
+<!--&lt;!&ndash;        <div class="form-group row mb-3 align-items-center field">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Поле для загрузки фотографии трека &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="input-group p-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="file" name="track_image_0" class="form-control-file track-image-field">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button type="button" class="btn btn-danger btn-sm remove-field-btn">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <i class="fas fa-minus-circle"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        {% track_images_html form as field_collection %}-->
+
+<!--        {% for field_html in field_collection %}-->
+<!--            <div class="form-group row mb-3 align-items-center field">-->
+<!--              <div class="col">-->
+<!--                <div class="input-group p-2">-->
+<!--                    {{ field_html }}-->
+<!--                  <button type="button" class="btn btn-danger btn-sm remove-field-btn">-->
+<!--                    <i class="fas fa-minus-circle"></i>-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--  {% for form in formset %}-->
+<!--    <div class="form-group">-->
+<!--      {{ form.as_ul }}-->
+<!--      {% for error in form.non_field_errors %}-->
+<!--        <span class="text-danger">{{ error }}</span>-->
+<!--      {% endfor %}-->
+<!--    </div>-->
+<!--  {% endfor %}-->

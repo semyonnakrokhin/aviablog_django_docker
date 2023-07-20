@@ -1,0 +1,24 @@
+<!--Sidebar on main page-->
+<div class="col-md-3 mb-3">
+  <h4>Top 5 Users</h4>
+  <ul class="list-group">
+    {% for user in top_users %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'profile' user.username %}">{{ user.username }}</a>
+        <span class="badge bg-primary rounded-pill">
+          {{ user.total_flights }} {% if user.total_flights == 1 %}flight{% else %}flights{% endif %}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+  <hr>
+  <h4>Site Information</h4>
+  <ul class="list-group">
+    {% for info in site_information %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ info.title }}
+          <span class="badge bg-primary rounded-pill">{{ info.value }}</span>
+        </li>
+    {% endfor %}
+  </ul>
+</div>

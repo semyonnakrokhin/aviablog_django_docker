@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<!-- Block Content -->
+<div class="container-fluid" style="max-width: 40%; margin: 0 auto;">
+    <table class="table table-striped main-table">
+      <thead>
+        <tr>
+          <th colspan="2"><img src="{{ MEDIA_URL }}{{ flight.airframe_photo }}" alt="Фото самолета" style="display: block; margin: 0 auto; max-height: 150px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 40%">Авиакомпания</td>
+          <td style="width: 60%">{{ flight.airline_name }}</td>
+        </tr>
+        <tr>
+          <td>Тип ВС</td>
+          <td>{{ flight.aircraft_type }}</td>
+        </tr>
+        <tr>
+          <td>Бортовой номер</td>
+          <td>{{ flight.registration_number }}</td>
+        </tr>
+        <tr>
+          <td>Номер рейса</td>
+          <td>{{ flight.flight_number }}</td>
+        </tr>
+        <tr>
+          <td>Дата</td>
+          <td>{{ flight.date }}</td>
+        </tr>
+        <tr>
+          <td>Маршрут</td>
+          <td>{{ flight.route }}</td>
+        </tr>
+        <tr>
+          <td>Время полета</td>
+          <td>{{ flight.flight_time }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Пассажир</td>
+          <td>{{ flight.user }}</td>
+        </tr>
+        <tr>
+          <td>Место</td>
+          <td>{{ flight.seat }}</td>
+        </tr>
+        <tr>
+          <td>Соседи</td>
+          <td>{{ flight.neighbors }}</td>
+        </tr>
+        <tr>
+          <td>Комментарии</td>
+          <td>{{ flight.comments }}</td>
+        </tr>
+        <tr>
+          <td>Стоимость билета, руб</td>
+          <td>{{ flight.ticket_price }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Прохладительные напитки</td>
+          <td>{{ flight.drinks }}</td>
+        </tr>
+        <tr>
+          <td>Закуски</td>
+          <td>{{ flight.appertize }}</td>
+        </tr>
+        <tr>
+          <td>Основное блюдо</td>
+          <td>{{ flight.main_course }}</td>
+        </tr>
+        <tr>
+          <td>Десерт</td>
+          <td>{{ flight.desert }}</td>
+        </tr>
+        <tr>
+          <td>Стоимость питания, руб</td>
+          <td>{{ flight.meal_price }}</td>
+        </tr>
+        {% if flight.meal_photo %}
+          <tr>
+            <th colspan="2"><img src="{{ MEDIA_URL }}{{ flight.meal_photo }}" alt="Фото питания" style="display: block; margin: 0 auto; max-height: 150px;"></th>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="container-fluid" style="max-width: 50%; margin: 0 auto;">
+      <table class="table table-striped info-table">
+        <thead>
+          <tr>
+            <th colspan="2">Условия вылета</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 40%">Аэропорт (IATA)</td>
+            <td style="width: 60%">{{ flight.departure_info.airport_code }}</td>
+          </tr>
+          <tr>
+            <td>Гейт</td>
+            <td>{{ flight.departure_info.gate }}</td>
+          </tr>
+          <tr>
+            <td>Через телетрап</td>
+            <td>{{ flight.departure_info.is_boarding_bridge }}</td>
+          </tr>
+          <tr>
+            <td>Время расчетное</td>
+            <td>{{ flight.departure_info.schedule_time }}</td>
+          </tr>
+          <tr>
+            <td>Время фактическое</td>
+            <td>{{ flight.departure_info.actual_time }}</td>
+          </tr>
+          <tr>
+            <td>Активная ВПП</td>
+            <td>{{ flight.departure_info.runway }}</td>
+          </tr>
+          <tr>
+            <td>METAR</td>
+            <td>{{ flight.departure_info.metar }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="container-fluid" style="max-width: 50%; margin: 0 auto;">
+      <table class="table table-striped info-table">
+        <thead>
+          <tr>
+            <th colspan="2">Условия прилета</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 40%">Аэропорт (IATA)</td>
+            <td style="width: 60%">{{ flight.arrival_info.airport_code }}</td>
+          </tr>
+          <tr>
+            <td>Гейт</td>
+            <td>{{ flight.arrival_info.gate }}</td>
+          </tr>
+          <tr>
+            <td>Через телетрап</td>
+            <td>{{ flight.arrival_info.is_boarding_bridge }}</td>
+          </tr>
+          <tr>
+            <td>Время расчетное</td>
+            <td>{{ flight.arrival_info.schedule_time }}</td>
+          </tr>
+          <tr>
+            <td>Время фактическое</td>
+            <td>{{ flight.arrival_info.actual_time }}</td>
+          </tr>
+          <tr>
+            <td>Активная ВПП</td>
+            <td>{{ flight.arrival_info.runway }}</td>
+          </tr>
+          <tr>
+            <td>METAR</td>
+            <td>{{ flight.arrival_info.metar }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    {% for track in flight.track_images %}
+      <img src="{{ MEDIA_URL }}{{ track.track_img }}" alt="Track {{ forloop.counter }}" style="max-height: 150px;">
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Кнопки и ссылки -->
+<div class="container mt-4">
+  <div class="row justify-content-end">
+    <div class="col-md-12">
+      {% if user.is_authenticated and flight.user.username == user.username %}
+        <div class="button-container text-right">
+          <a href="{% url 'flight_update' flight.usertripslug %}" class="btn btn-primary">Edit</a>
+
+          <form action="{% url 'flight_delete' flight.usertripslug %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Delete">
+          </form>
+          
+          <a href="#" class="btn btn-secondary">Get in PDF</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+  <script src="{% static 'js/modal_screen.js' %}"></script>
+{% endblock scripts %}
+
+
+Что должно быть на странице
+
+одна узкая таблица, в которой два стобца:
+1 строка: объединенные столбцы, в ячейке помещается фото самолета
+2 строка: авиакомпания - название АК
+3 строка: номер рейса
+4 строка: дата
+5 строка: тип ВС
+6 строка: пункт отправления и пункт назначения (IATA)
+7 строка: пустая (для разграничения)
+8 строка: место
+9 строка: соседи
+10 строка: комментарии
+11 строка: стоимость
+12 строка пустая (для разграничения)
+13 строка прохладительные напитки
+14 строка закуски
+15 основное блюдо
+16 строка десерт
+17 строка: фото питания, помещается в объединенные ячейки
+
+
+1 строка: аэропорт (IATA)
+2 строка: METAR
+3 строка: гейт
+4 строка: через телетрап (bool)
+5 строка: время расчетное
+6 строка: время фактическое

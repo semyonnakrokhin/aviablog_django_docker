@@ -1,0 +1,1158 @@
+[
+{
+  "model": "flights.aircrafttype",
+  "pk": 1,
+  "fields": {
+    "manufacturer": "Airbus",
+    "generic_type": "A320"
+  }
+},
+{
+  "model": "flights.aircrafttype",
+  "pk": 2,
+  "fields": {
+    "manufacturer": "Airbus",
+    "generic_type": "A321Neo"
+  }
+},
+{
+  "model": "flights.aircrafttype",
+  "pk": 3,
+  "fields": {
+    "manufacturer": "Boeing",
+    "generic_type": "737-800"
+  }
+},
+{
+  "model": "flights.aircrafttype",
+  "pk": 9,
+  "fields": {
+    "manufacturer": "Boeing",
+    "generic_type": "A320"
+  }
+},
+{
+  "model": "flights.aircrafttype",
+  "pk": 12,
+  "fields": {
+    "manufacturer": "Airbus",
+    "generic_type": "A321"
+  }
+},
+{
+  "model": "flights.airline",
+  "pk": 1,
+  "fields": {
+    "name": "S7 Airlines"
+  }
+},
+{
+  "model": "flights.airline",
+  "pk": 2,
+  "fields": {
+    "name": "Aeroflot"
+  }
+},
+{
+  "model": "flights.airline",
+  "pk": 3,
+  "fields": {
+    "name": "Pobeda"
+  }
+},
+{
+  "model": "flights.airline",
+  "pk": 9,
+  "fields": {
+    "name": "Nordwind Airlines"
+  }
+},
+{
+  "model": "flights.airline",
+  "pk": 17,
+  "fields": {
+    "name": "NordStar"
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 1,
+  "fields": {
+    "serial_number": "10193",
+    "registration_number": "RA-73703",
+    "photo": "airframes/aeroflot/ra-73703.jpg",
+    "aircraft_type": 2,
+    "airline": 2
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 2,
+  "fields": {
+    "serial_number": "5607",
+    "registration_number": "VP-BOJ",
+    "photo": "airframes/s7 airlines/vp-boj.jpg",
+    "aircraft_type": 1,
+    "airline": 1
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 3,
+  "fields": {
+    "serial_number": "3446",
+    "registration_number": "VP-BCZ",
+    "photo": "airframes/s7 airlines/vp-bcz.jpg",
+    "aircraft_type": 1,
+    "airline": 1
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 11,
+  "fields": {
+    "serial_number": "32841",
+    "registration_number": "VQ-BVY",
+    "photo": "airframes/nordwind airlines/vq-bvy_e6B2Dn1.jpg",
+    "aircraft_type": 3,
+    "airline": 9
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 17,
+  "fields": {
+    "serial_number": "41992",
+    "registration_number": "VQ-BTG",
+    "photo": "airframes/pobeda/vq-btg_swEvwNq.jpg",
+    "aircraft_type": 3,
+    "airline": 3
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 26,
+  "fields": {
+    "serial_number": "7037",
+    "registration_number": "VP-BAV",
+    "photo": "airframes/aeroflot/vp-bav_PuZUrUe.jpg",
+    "aircraft_type": 12,
+    "airline": 2
+  }
+},
+{
+  "model": "flights.airframe",
+  "pk": 30,
+  "fields": {
+    "serial_number": "36813",
+    "registration_number": "VQ-BAA",
+    "photo": "airframes/nordstar/vq-baa.jpg",
+    "aircraft_type": 3,
+    "airline": 17
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 1,
+  "fields": {
+    "flight": 1,
+    "status": "Departure",
+    "airport_code": "SVO",
+    "metar": "METAR UUEE 250700Z 09006MPS 9000  -RA BKN005 OVC021 07/05  Q0999 R06R/290045  R06C/290051 NOSIG=",
+    "gate": "B",
+    "is_boarding_bridge": true,
+    "schedule_time": "09:45:00",
+    "actual_time": "09:59:00",
+    "runway": "06C"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 2,
+  "fields": {
+    "flight": 1,
+    "status": "Arrival",
+    "airport_code": "OVB",
+    "metar": "METAR UNNT  251030Z 36005MPS  CAVOK 15/05  Q1007 R25/090070  R34///////  NOSIG RMK QFE745/0994=",
+    "gate": "",
+    "is_boarding_bridge": true,
+    "schedule_time": "17:45:00",
+    "actual_time": "17:27:00",
+    "runway": "25"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 3,
+  "fields": {
+    "flight": 2,
+    "status": "Departure",
+    "airport_code": "SIP",
+    "metar": "",
+    "gate": "",
+    "is_boarding_bridge": true,
+    "schedule_time": null,
+    "actual_time": null,
+    "runway": "01"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 4,
+  "fields": {
+    "flight": 2,
+    "status": "Arrival",
+    "airport_code": "DME",
+    "metar": "",
+    "gate": "",
+    "is_boarding_bridge": true,
+    "schedule_time": null,
+    "actual_time": null,
+    "runway": "32L"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 5,
+  "fields": {
+    "flight": 3,
+    "status": "Departure",
+    "airport_code": "NOZ",
+    "metar": null,
+    "gate": null,
+    "is_boarding_bridge": false,
+    "schedule_time": "06:35:00",
+    "actual_time": "06:38:00",
+    "runway": "01"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 6,
+  "fields": {
+    "flight": 3,
+    "status": "Arrival",
+    "airport_code": "DME",
+    "metar": "04:00 230°-4м/с 8км ливневый дождь 4балла - 270м 8баллов - 480мCb +2, влажность 87% 982 мм рт. Ст.",
+    "gate": null,
+    "is_boarding_bridge": false,
+    "schedule_time": "07:20:00",
+    "actual_time": "07:09:00",
+    "runway": "32L"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 11,
+  "fields": {
+    "flight": 11,
+    "status": "Departure",
+    "airport_code": "KJA",
+    "metar": "METAR UNKL 030300Z 28001MPS 7000 -SN SCT024 M35/M38 Q1026            R29/450250 NOSIG RMK QFE744=",
+    "gate": "9",
+    "is_boarding_bridge": true,
+    "schedule_time": "10:00:00",
+    "actual_time": "10:25:00",
+    "runway": "29"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 12,
+  "fields": {
+    "flight": 11,
+    "status": "Arrival",
+    "airport_code": "SVO",
+    "metar": "\"METAR [UUEE] [03 08:00 Z] [170 03G09 MPS] [Видимость 4300 м] [-SN BR, \"\"-\"\" - слабоя явление, видимость более 2 км] SCT007 M02/M03            [Q1019 QNH hPA] [Состояние ВПП R06R/(5)(9)(03)(40) R06C/590330] [TEMPO - ожидается 1500 -FZRA BR]=\"",
+    "gate": "b",
+    "is_boarding_bridge": true,
+    "schedule_time": "11:10:00",
+    "actual_time": "11:08:00",
+    "runway": "06R"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 23,
+  "fields": {
+    "flight": 17,
+    "status": "Departure",
+    "airport_code": "VKO",
+    "metar": "METAR UUWW 031400Z 03007MPS 9999 BKN028 20/14 Q1012 R06/000070 NOSIG=",
+    "gate": "9A",
+    "is_boarding_bridge": false,
+    "schedule_time": "16:30:00",
+    "actual_time": "16:50:00",
+    "runway": "6"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 24,
+  "fields": {
+    "flight": 17,
+    "status": "Arrival",
+    "airport_code": "MRV",
+    "metar": "METAR URMM 031530Z 22003MPS 9999 NSC 29/18 Q1004 R12/090070 NOSIG RMK QFE726/0968=",
+    "gate": "",
+    "is_boarding_bridge": false,
+    "schedule_time": "18:50:00",
+    "actual_time": "18:40:00",
+    "runway": "12"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 41,
+  "fields": {
+    "flight": 26,
+    "status": "Departure",
+    "airport_code": "SVO",
+    "metar": "METAR UUEE 262000Z 26008MPS 2900 -SN OVC008 01/00 Q1003 R24L/590345",
+    "gate": "",
+    "is_boarding_bridge": false,
+    "schedule_time": "22:15:00",
+    "actual_time": "23:08:00",
+    "runway": "24L"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 42,
+  "fields": {
+    "flight": 26,
+    "status": "Arrival",
+    "airport_code": "NOZ",
+    "metar": "-14 градусов",
+    "gate": "",
+    "is_boarding_bridge": false,
+    "schedule_time": "06:55:00",
+    "actual_time": "07:03:00",
+    "runway": "19"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 49,
+  "fields": {
+    "flight": 30,
+    "status": "Departure",
+    "airport_code": "KJA",
+    "metar": "\"METAR UNKL 070130Z 31001MPS CAVOK 06/03 Q1022 R29/CLRD65            NOSIG RMK QFE741=\"",
+    "gate": "7",
+    "is_boarding_bridge": true,
+    "schedule_time": "07:40:00",
+    "actual_time": "08:41:00",
+    "runway": "29"
+  }
+},
+{
+  "model": "flights.flightinfo",
+  "pk": 50,
+  "fields": {
+    "flight": 30,
+    "status": "Arrival",
+    "airport_code": "DME",
+    "metar": "05.30 020°-2м/c  10 км    м/о +18 влажность 68% 1022",
+    "gate": "",
+    "is_boarding_bridge": false,
+    "schedule_time": "08:55:00",
+    "actual_time": "08:48:00",
+    "runway": "32L"
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 1,
+  "fields": {
+    "flight_number": "AFL1460",
+    "airframe": 1,
+    "date": "2022-09-25",
+    "flight_time": "03:28:00"
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 2,
+  "fields": {
+    "flight_number": "S72014",
+    "airframe": 2,
+    "date": "2021-08-04",
+    "flight_time": null
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 3,
+  "fields": {
+    "flight_number": "S72626",
+    "airframe": 3,
+    "date": "2020-02-03",
+    "flight_time": "04:32:00"
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 11,
+  "fields": {
+    "flight_number": "NWS294",
+    "airframe": 11,
+    "date": "2019-02-03",
+    "flight_time": "04:43:00"
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 17,
+  "fields": {
+    "flight_number": "PBD279",
+    "airframe": 17,
+    "date": "2021-07-03",
+    "flight_time": "02:10:00"
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 26,
+  "fields": {
+    "flight_number": "AFL1458",
+    "airframe": 26,
+    "date": "2020-01-26",
+    "flight_time": "03:55:00"
+  }
+},
+{
+  "model": "flights.flight",
+  "pk": 30,
+  "fields": {
+    "flight_number": "TYA108",
+    "airframe": 30,
+    "date": "2019-09-07",
+    "flight_time": "04:07:00"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 1,
+  "fields": {
+    "flight": 1,
+    "passenger": 1,
+    "seat": "22D",
+    "neighbors": "я; Эрдэм; девушка лет 35, немного в теле",
+    "comments": "Эрдэм устроил бучу в очереди на первичный досмотр на входе в аэропорт, орал на всех, кто проходил без очереди, расталкивал и толкался. Люди смотрели в недоумении. Позади нас стояли вояки, отправлявшиеся на фронт, рожи огромные, встали по стойке смирно, поздоровались с Эрдэмом. Эрдэм все время бубнил, что русские терпилы. В очереди в чистую зону опять начал орать на всех, кто пытался пройти без очереди. На посадке сели в разные автобусы. Когда мой автобус приехал к самолету, видел Эрдэма, бегающего по перрону. По пути от ап до самолета Эрдэм потерял подушку под голову.\r\nКВС чуть ли не моложе меня. Сидения очень тонкие\r\nНа предварительном пропускали А350 в Красноярск. Эрдэм в этот момент сказал, что скорее всего поедет в Алматы, и будет собеситься, так что он не будет искать комнату.\r\nВ полете перед нами сидела молодая (около 35) пара с двумя детьми. Мамка с ярко красными волосами, обтатуированая. Маленький ребенок, листая мамин телефон, наткнулся в галерее на хоумфото с мамиными большими сиськами, после чего папа взял у него телефон и отдал маме.\r\nПеред взлетом мама не могла успокоить ребенка, и тогда большой мужик по диагонали попросил его дать ему пять и он успокоился.\r\nПосле завтрака начал дремать, сквозь дремоту постоянно орал ребенок.\r\nНезадолго до посадки и после посадки над Эрдэмом возобладала светлая сторона и он разыгрался с ребенком.\r\nСели очень жестко, перед выравниванием скольжение",
+    "price": 39818,
+    "slug": "afl1460-2022-09-25-semyon"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 2,
+  "fields": {
+    "flight": 1,
+    "passenger": 2,
+    "seat": "22E",
+    "neighbors": "dasas",
+    "comments": "adsadsad",
+    "price": 39818,
+    "slug": "afl1460-2022-09-25-erdem"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 3,
+  "fields": {
+    "flight": 2,
+    "passenger": 1,
+    "seat": "2C",
+    "neighbors": "Мамка; сынок-ловелас в розовом поло, рваных джинсах и серебристых часах (лет 17, сидел уверенно, руки как уменя, похож на Ривера Радамуса, короткая стрижка с окрашиванием в белый); я",
+    "comments": "На посадке ловелас с мамой держались за руки",
+    "price": null,
+    "slug": "s72014-2021-08-04-semyon"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 4,
+  "fields": {
+    "flight": 3,
+    "passenger": 1,
+    "seat": "19D",
+    "neighbors": "я; тетка (~Марина Сапогова - Борис); возрастной седой грузин/азер с мудрым видом в сером костюме с полосками и галстуком",
+    "comments": "В аэропорту Спиченково: реклама ярморок, огромный аквариум, урезанная кабина Ту-154М (две\r\nнаклонные секции от л и п пилотов), туалеты только в международной зоне, буфет с бутербродами\r\nи несвежими пиццами, немаленький холодный накопитель, в конце буфет с коньячком и бутерами\r\nСел в атобус одним из последних. Долго ждал на улице, т.к. мудаки раскладывали свои вещи по\r\nбагажным полками и стояли в проходе\r\nМарина Сапогова сидела на моем месте. Думала, что D - это у окна. Долго спорила, спросила у\r\nстюардессы.\r\nВесь полет конкретно вырубало - голова не держалась. Оба раза тетка выходила со мной.\r\nВо время завтрака уранил крышку от касалетки на штаны тетки - та поцокала. Я извинился.\r\nЗаход был жудко нестабилизированный - возможно сажал второй пилот. Без реверса, сильное торможение. Еще до того, как начали заталкивать задом на стоянку, многие начали доставать вещи. Стюардесса ходила и сажала всех - те не поддавались. Когда покидал самолет со мной вышел второй пилот - мой ровесник. КВС ~ 38 лет с залысиной.",
+    "price": 15418,
+    "slug": "s72626-2020-02-03-semyon"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 10,
+  "fields": {
+    "flight": 11,
+    "passenger": 1,
+    "seat": "22D",
+    "neighbors": "я; худощавая девушка блондинка с каре; мужик-парень подкачанный с татуировкой (по виду технарь)",
+    "comments": "\"АТР взлетал с инверсионным следом, пропал сразу после отрыва\r\nСпал до завтрака и после некрепко\r\nПроснулся за 1.5 часа до посадки\r\nДо дальнего летели в облачности\r\nСиденья узкие, места для ног мало\"",
+    "price": 6500,
+    "slug": "nws294-2019-02-03-semyon"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 16,
+  "fields": {
+    "flight": 17,
+    "passenger": 1,
+    "seat": "21D",
+    "neighbors": "я; блондинка мама девочки (скромная); девочка лет 15 с заставкой своего красавца-парня на телефоне",
+    "comments": "Едва успел до окончания регистрации, из-за того, что не получалось собрать рюкзак, а потом еще решил помыть посуду)). Успел только благодаря выделенке, по которой частично смогли объехать пробку. \r\nКВС по голосу лет 36, говорил бодро, как учил Летчиклеха. Перед вылетом мама девочки предложила мне конфетку. Сели с большой вертикалной скоростью, касание жестое, без реверса",
+    "price": 5199,
+    "slug": "pbd279-2021-07-03-semyon"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 25,
+  "fields": {
+    "flight": 26,
+    "passenger": 1,
+    "seat": "25D",
+    "neighbors": "я; -; четкий (подкачанный, короткостриженный, в черной майке с принтом и черных спорт штанах)",
+    "comments": "Когда поднимался по трапу, задуло правое ухо. Командир возрастной, вп - мой ровесник, понтовый, похож на одного чувака со школы. Сначала сел на 26D, потом согнали. На взлете были порывы в путевом канале - четкий перекрестился и поцеловал нагрудный крест. Сказал мне, что будет спать, и попросил, чтобы с едой его не тревожили. Я хотел взять его порцию еды (курицу), но, когда мне дали баранину, он ехидно заявил: \"Я все-таки поем\". Из питания он взял только тульский пряник, к остальному не притрагивался. Последние 1.5 часа до посадки спал\r\nПолоса Спиченково даже без осевой. Все заметено снегом, огромные сугробы, пустота и Ту-154",
+    "price": 18091,
+    "slug": "afl1458-2020-01-26-semyon"
+  }
+},
+{
+  "model": "flights.usertrip",
+  "pk": 29,
+  "fields": {
+    "flight": 30,
+    "passenger": 1,
+    "seat": "22D",
+    "neighbors": "я; \"дед\"-алкаш в фуражке (потом вонял); пожилая женщина",
+    "comments": "Задержка на 30 мин из-за позднего прибытия самолета. На перроне B757F Aviastar и Ил-76 VD. Перед нами взлетел RA-42353 на Талакан.\r\nБольшая часть леса и рельефа срезаны под МРД. На исполнительном без ожидания – в глиссаде B738 NordStar VQ-BDO из Норильска. Неаккуратное триммирование в наборе. У трех стюардесс ботоксные губы – ботоксный рейс. Женщина передо мной всегда спрашивала разрешение откинуть спинку. Заснул хорошо перед прохладительными напитками. Алкаш – бомж отказался от питания. Весь полет просидел в фуражке. Старый, но чистый туалет. Были накидки на сидушку. Спустя 30 мин уснул. Разбудили, т.к. нужно было выпускать женщину в туалет. На посадке активно управлял в путевом канале. Во время выгрузки из самолета красиво взлетел Як-42: долгий проход с нулевым тангажом, крутой подъем с правым креном – красивый вид в хвост.",
+    "price": 11578,
+    "slug": "tya108-2019-09-07-semyon"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 10,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.56.06.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 11,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.56.26.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 12,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.56.35.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 13,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.56.50.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 14,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.00.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 15,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.08.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 16,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.13.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 17,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.21.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 18,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.27.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 19,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.35.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 20,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.47.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 21,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.57.54.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 22,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.58.02.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 23,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.58.12.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 24,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.58.28.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 25,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.58.51.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 26,
+  "fields": {
+    "trip": 4,
+    "track_img": "tracks/semyon/s72626/2020-02-03/скриншот_2020-02-04_15.59.18.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 34,
+  "fields": {
+    "trip": 16,
+    "track_img": "tracks/semyon/pbd279/2021-07-03/скриншот_2021-07-17_12.14.19.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 48,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/1.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 49,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/2.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 50,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_14.59.30.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 51,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.00.20.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 52,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.00.38.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 53,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.00.49.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 54,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.01.41.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 55,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.02.01.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 56,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.02.11.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 57,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.02.28.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 58,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.02.41.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 59,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.02.48.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 60,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_14.59.05.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 61,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_14.57.59.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 62,
+  "fields": {
+    "trip": 29,
+    "track_img": "tracks/semyon/tya108/2019-09-07/скриншот_2019-09-08_15.15.14.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 115,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/3.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 116,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/4.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 117,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/5.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 118,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/6.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 119,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/7.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 120,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/8.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 121,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/9.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 122,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/10.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 123,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/11.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 124,
+  "fields": {
+    "trip": 25,
+    "track_img": "tracks/semyon/afl1458/2020-01-26/меню_2.jpg"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 145,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/автобус_до_самолета.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 146,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/1.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 147,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/2.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 148,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/3.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 149,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/4.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 150,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/5.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 151,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/6.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 152,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/7.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 153,
+  "fields": {
+    "trip": 1,
+    "track_img": "tracks/semyon/afl1460/2022-09-25/profile.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 154,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.53.46.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 155,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.54.07.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 156,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.53.23.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 157,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.54.21.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 158,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.54.41.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 159,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.54.52.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 160,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.55.04.png"
+  }
+},
+{
+  "model": "flights.trackimage",
+  "pk": 161,
+  "fields": {
+    "trip": 10,
+    "track_img": "tracks/semyon/nws294/2019-02-03/скриншот_2019-02-04_16.53.10.png"
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 1,
+  "fields": {
+    "trip": 1,
+    "drinks": "вода, сок Сады Придонья (апельсин/томат/яблоко)",
+    "appertize": "ветчина, помидорчик и огурчик; джем вишневый; масло; круасан без всего; черный хлеб; яблоко",
+    "main_course": "Два блинчика с намеками на малиновый джем. На выбор омлет с овощами и блинчики",
+    "desert": "фирменный шоколад Аэрофлот",
+    "meal_price": 0,
+    "meal_photo": ""
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 2,
+  "fields": {
+    "trip": 3,
+    "drinks": "Вода",
+    "appertize": "нет",
+    "main_course": "Чай/кофе + батончики злаковые с вишней",
+    "desert": "нет",
+    "meal_price": 0,
+    "meal_photo": ""
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 3,
+  "fields": {
+    "trip": 4,
+    "drinks": "Вода (газ/без) \"Снежская\", сок \"Фруктовый сад\" (томат/яблоко/апельсин)",
+    "appertize": "Салат овощной с кускусом и кукурузой, черный хлеб",
+    "main_course": "Спец. Питание - мусульманское: говядина, тушеная в томатном соусе с зеленью кориандра, с гарниром из белого риса. \r\nНа выбор: рис с овощами, оладьи с джемом. Внутри йогурт",
+    "desert": "Фруктовая нарезка из киви, апельсина и винограда, батончик \"Kit-Kat\"",
+    "meal_price": 350,
+    "meal_photo": "meal/s72626/2020-02-03/питание_в_полете_sbi2626_03_02_20.jpg"
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 4,
+  "fields": {
+    "trip": 2,
+    "drinks": "Вода",
+    "appertize": "То же, что и у Семена",
+    "main_course": "То же, что и у Семена",
+    "desert": "То же, что и у Семена",
+    "meal_price": null,
+    "meal_photo": ""
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 10,
+  "fields": {
+    "trip": 10,
+    "drinks": "вода \"Святой источник\" (газ/без)",
+    "appertize": "салат \"Овощной\" (к нему салатная заправка - растительное масло, лимонный сок, соевый соус), рыбная закуска, булочка, масло.",
+    "main_course": "плов куриный (в составе написано, что только бульон, без мяса - так и оказалось) - пересоленный.",
+    "desert": "фруктовый батончик \"Виталайт\". Налили горячую воду, в наборе на выбор кофе \"Nescafe\", чай (хороший), лимон, сливки, сахар",
+    "meal_price": 700,
+    "meal_photo": "meal/nws294/2019-02-03/nws294_03_02_19_6RLrapm.jpg"
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 37,
+  "fields": {
+    "trip": 25,
+    "drinks": "Вода, сок Rich (апельсин/томат/яблоко). Вино: красное/белое",
+    "appertize": "куриная грудка, кускус с баклажановой икрой и помидор черри; сыр \"President\"; масло; черный хлеб; булочка",
+    "main_course": "тушеная баранина с булгуром и брокколи. На выбор баранина или курица",
+    "desert": "тульский пряник с фруктовой начинкой",
+    "meal_price": 0,
+    "meal_photo": "meal/afl1458/2020-01-26/питание_в_полете_su1458_26_01_20_9HITNRe.jpg"
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 41,
+  "fields": {
+    "trip": 29,
+    "drinks": "Вода, сок \"Добрый\" (томат/яблоко/апельсин), дюшес, лимонад",
+    "appertize": "черствый белый хлеб, салат (черри, 5 кусочков огурца, старый лист салата)",
+    "main_course": "сосиска и слипшиеся макароны. На выбор сосиска с макаронами, картофельная запеканка (вроде с кусочками мяса), рисовая запеканка",
+    "desert": "печенька с белой прослойкой",
+    "meal_price": 0,
+    "meal_photo": "meal/tya108/2019-09-07/питание_в_полете_tya108_07_09_19.jpg"
+  }
+},
+{
+  "model": "flights.meal",
+  "pk": 42,
+  "fields": {
+    "trip": 16,
+    "drinks": "Вода",
+    "appertize": "",
+    "main_course": "",
+    "desert": "",
+    "meal_price": null,
+    "meal_photo": ""
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$wZoQtU6ss9pWA1jdR3fLqG$DhzIDi0SoOIaUhc6CHb8LG0Se86RQN6ti4r7lmz0wnU=",
+    "last_login": "2023-07-20T18:49:04.874Z",
+    "is_superuser": true,
+    "username": "semyon",
+    "first_name": "",
+    "last_name": "",
+    "email": "spotting@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-05-06T11:21:08.657Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$CTHheQLbiWniL4d7LcA9pa$QUtRU+GgXYjkjVIXjhVsAL+8Wxrpj85GTNRE0otlHNs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "erdem",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-05-06T11:25:48.700Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

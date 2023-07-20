@@ -1,0 +1,78 @@
+<div class="border p-3 mb-3">
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.flight_number.id_for_label }}">
+            {{ form.flight_number.label }}{% if form.flight_number.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.flight_number }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.date.id_for_label }}">
+            {{ form.date.label }}{% if form.date.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.date }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.flight_time.id_for_label }}">
+            {{ form.flight_time.label }}{% if form.flight_time.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.flight_time }}
+        </div>
+    </div>
+</div>
+
+<div class="border p-3 mb-3">
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.airline_name.id_for_label }}">
+            {{ form.airline_name.label }}{% if form.airline_name.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.airline_name }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.manufacturer.id_for_label }}">
+            {{ form.manufacturer.label }}{% if form.manufacturer.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.manufacturer }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.generic_type.id_for_label }}">
+            {{ form.generic_type.label }}{% if form.generic_type.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.generic_type }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.serial_number.id_for_label }}">
+            {{ form.serial_number.label }}{% if form.serial_number.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.serial_number }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.registration_number.id_for_label }}">
+            {{ form.registration_number.label }}{% if form.registration_number.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.registration_number }}
+        </div>
+    </div>
+    <p>{{ aircraft_photo }}</p>
+    <div class="form-group row mb-3">
+        <label class="col-sm-3 col-form-label" for="{{ form.photo.id_for_label }}">
+            {{ form.airframe_photo.label }}{% if form.airframe_photo.field.required %}*{% endif %}
+        </label>
+        <div class="col-sm-9">
+            {{ form.airframe_photo }}
+        </div>
+    </div>
+</div>
