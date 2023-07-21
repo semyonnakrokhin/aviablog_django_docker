@@ -40,6 +40,14 @@
   }
 },
 {
+  "model": "flights.aircrafttype",
+  "pk": 66,
+  "fields": {
+    "manufacturer": "TestMan",
+    "generic_type": "test-001"
+  }
+},
+{
   "model": "flights.airline",
   "pk": 1,
   "fields": {
@@ -72,6 +80,13 @@
   "pk": 17,
   "fields": {
     "name": "NordStar"
+  }
+},
+{
+  "model": "flights.airline",
+  "pk": 68,
+  "fields": {
+    "name": "TestAirline"
   }
 },
 {
@@ -113,7 +128,7 @@
   "fields": {
     "serial_number": "32841",
     "registration_number": "VQ-BVY",
-    "photo": "airframes/nordwind airlines/vq-bvy_e6B2Dn1.jpg",
+    "photo": "airframes/nordwind airlines/vq-bvy.jpg",
     "aircraft_type": 3,
     "airline": 9
   }
@@ -124,7 +139,7 @@
   "fields": {
     "serial_number": "41992",
     "registration_number": "VQ-BTG",
-    "photo": "airframes/pobeda/vq-btg_swEvwNq.jpg",
+    "photo": "airframes/pobeda/vq-btg.jpg",
     "aircraft_type": 3,
     "airline": 3
   }
@@ -135,7 +150,7 @@
   "fields": {
     "serial_number": "7037",
     "registration_number": "VP-BAV",
-    "photo": "airframes/aeroflot/vp-bav_PuZUrUe.jpg",
+    "photo": "airframes/aeroflot/vp-bav.jpg",
     "aircraft_type": 12,
     "airline": 2
   }
@@ -1124,7 +1139,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$600000$wZoQtU6ss9pWA1jdR3fLqG$DhzIDi0SoOIaUhc6CHb8LG0Se86RQN6ti4r7lmz0wnU=",
-    "last_login": "2023-07-20T18:49:04.874Z",
+    "last_login": "2023-07-21T10:32:08.693Z",
     "is_superuser": true,
     "username": "semyon",
     "first_name": "",

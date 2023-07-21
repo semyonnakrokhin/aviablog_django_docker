@@ -6,8 +6,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import ListView, TemplateView, DetailView, CreateView, FormView, UpdateView
-from .forms import AddFlightForm, MealForm, TrackImageForm
+from django.views.generic import ListView, TemplateView, DetailView, CreateView, FormView, UpdateView, DeleteView
+from .forms import AddFlightForm, MealForm, TrackImageForm, UserTripForm
 from .permissions import IsOwnerPermissionMixin
 from .services import FlightInformationService, PassengerService, PassengerProfileService, FlightDetailService
 
@@ -62,28 +62,32 @@ class FlightView(DetailView):
         return {**data, **files}
 
 
-class FlightDeleteView(IsOwnerPermissionMixin, View):
-    form_class = AddFlightForm
-    formset_class = modelformset_factory(TrackImage, form=TrackImageForm, fields=('track_img',), extra=10)
+class FlightDeleteView(IsOwnerPermissionMixin, DeleteView):
+    # form_class = AddFlightForm
+    # formset_class = modelformset_factory(TrackImage, form=TrackImageForm, fields=('track_img',), extra=10)
+    form_class = UserTripForm
+    success_url = reverse_lazy('home')
+    slug_url_kwarg = 'usertripslug'
+    queryset = UserTrip.objects.all()
 
     def get_passenger(self):
         data, _, _ = FlightDetailService.get_flight_details(self.kwargs['usertripslug'])
         return data.get('user')
 
-    def post(self, request, usertripslug):
-        data, files, id_dict = FlightDetailService.get_flight_details(usertripslug)
-        track_images = data.get('track_images')
-
-        form = self.form_class(None, None)
-
-        with transaction.atomic():
-            print('form acts')
-            form.save(user=request.user, **id_dict)
-
-            # for track_image_instance in track_images:
-            #     track_image_instance.delete()
-
-        return redirect('home')
+    # def post(self, request, usertripslug):
+    #     data, files, id_dict = FlightDetailService.get_flight_details(usertripslug)
+    #     track_images = data.get('track_images')
+    #
+    #     form = self.form_class(None, None)
+    #
+    #     with transaction.atomic():
+    #         print('form acts')
+    #         form.save(user=request.user, **id_dict)
+    #
+    #         # for track_image_instance in track_images:
+    #         #     track_image_instance.delete()
+    #
+    #     return redirect('home')
 
 
 class FlightUpdateView(IsOwnerPermissionMixin, View):

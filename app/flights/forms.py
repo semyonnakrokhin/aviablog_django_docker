@@ -4,6 +4,8 @@ from typing import Union
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.files.base import ContentFile
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import transaction
 from django.forms import formset_factory
 
@@ -19,11 +21,29 @@ from .models import (Flight,
 
 
 class MyFormMixin:
+
+    @staticmethod
+    def get_data_without_files(data: dict):
+        data_without_photo = data.copy()
+
+        for key, value in data.items():
+            if isinstance(value, InMemoryUploadedFile):
+                del data_without_photo[key]
+
+        print(data, data_without_photo, sep='\n')
+        return data_without_photo
+
+
     def update_create_delete_data(self, model, data: dict, id: Union[int, None]):
 
         if id is None:
             # Создаем новую запись в бд (либо берем уже существующую, если она присутствует)
-            instance, _ = model.objects.get_or_create(**data)
+            try:
+                # Попытка получить запись с использованием урезанного словаря data_without_photo
+                instance = model.objects.get(**self.get_data_without_files(data))
+            except ObjectDoesNotExist:
+                # Создаем новую запись, т.к. в бд нет такой записи
+                instance = model.objects.create(**data)
 
         if id is not None:
             try:
@@ -43,9 +63,6 @@ class MyFormMixin:
 
 
 class AircraftTypeForm(forms.Form, MyFormMixin):
-    # existing_manufacturers = AircraftType.objects.values_list('manufacturer', flat=True)
-    # existing_generic_types = AircraftType.objects.values_list('generic_type', flat=True)
-
     manufacturer = forms.CharField(widget=forms.TextInput(attrs={'list': 'manufacturer_choices'}))
     generic_type = forms.CharField(widget=forms.TextInput(attrs={'list': 'generic_type_choices'}))
 
@@ -62,8 +79,6 @@ class AircraftTypeForm(forms.Form, MyFormMixin):
 
 
 class AirlineForm(forms.Form, MyFormMixin):
-    # existing_airlines = Airline.objects.values_list('name', flat=True)
-
     airline_name = forms.CharField(label='Airline name',
                                    widget=forms.TextInput(attrs={'list': 'airline_choices'}))
 

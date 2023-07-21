@@ -147,7 +147,15 @@ DB_PASSWORD=qwerty
 > cd aviablog_django_docker
 ```
 
-4. В этой директории создайте файл .env со следующим содержанием (SECRET_KEY пока не трогать!):
+4. В этой директории создайте файл .env.db со следующим содержанием для создания базы данных и пользователя в контейнере с бд:
+
+```dotenv
+POSTGRES_USER=aviator
+POSTGRES_PASSWORD=qwerty
+POSTGRES_DB=aviablog_db
+```
+
+5. В этой же директории создайте файл .env со следующими переменными. Переменные DEBUG, SECRET_KEY, DJANGO_ALLOWED_HOSTS, CSRF_TRUSTED_ORIGINS, DB_ENGINE, DB_HOST, DB_PORT скопировать из примера и не менять. Значения остальных переменных взять из .env.db
 
 ```dotenv
 DEBUG=0
@@ -161,15 +169,8 @@ DB_NAME=aviablog_db
 DB_USER=aviator
 DB_PASSWORD=qwerty
 ```
-5. В этой же директории создайте файл .env.db со следующим содержанием для создания базы данных в контейнере:
 
-```dotenv
-POSTGRES_USER=aviator
-POSTGRES_PASSWORD=qwerty
-POSTGRES_DB=aviablog_db
-```
-
-6. Выполните команду:
+6. Выполните команду находясь в корневой директории проекта:
 
 ```shell
 # Linux
@@ -177,14 +178,35 @@ POSTGRES_DB=aviablog_db
 ```
 Откройте веб-браузер и перейдите по адресу http://localhost:1337 для доступа к AviaBlog.
 
-7. Для остановки контейнеров выполните команду:
+7. (Опционально) Для того, чтобы наполнить бд вашими тестовыми данными, выполните команды:
+
+- Для запущенного контейнера aviablog_django_docker-web-1 (у вас может быть другое название) выполните команду для сохранения данных из бд в json-файле
 
 ```shell
 # Linux
-> docker-compose up -d --build
+> docker exec aviablog_django_docker-web-1 python manage.py dumpdata flights.AircraftType flights.Airline flights.Airframe flights.FlightInfo flights.Flight flights.UserTrip flights.TrackImage flights.Meal auth.User --indent 2 -o /home/app/web/fixture.json
 ```
 
-8. Для того, чтобы наполнить бд вашими тестовыми данными, выполните команду:
+- Скопируйте полученный json-файл к себе на локальный хост:
+
+```shell
+# Linux
+> docker cp aviablog_django_docker-web-1:/home/app/web/fixture.json $(pwd)/app/fixture.json
+```
+
+- Убедитесь, что кодировка полученного файла utf-8:
+
+```shell
+# Linux
+> file -i app/fixture.json
+```
+
+8. Для остановки контейнеров выполните команду:
+
+```shell
+# Linux
+> docker-compose down
+```
 
 
 ## Вклад

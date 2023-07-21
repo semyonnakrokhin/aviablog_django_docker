@@ -19,20 +19,23 @@ class FlightInformationService:
 
         cards = []
 
-        for trip in latest_cards:
-            card = {
-                'photo_url': trip.flight.airframe.photo,
-                'flight_number': trip.flight.flight_number,
-                'date': trip.flight.date,
-                'passenger': trip.passenger.username,
-                'airline': trip.flight.airframe.airline.name,
-                'aircraft_type': ' '.join((trip.flight.airframe.aircraft_type.manufacturer,
-                                           trip.flight.airframe.aircraft_type.generic_type)),
-                'departure': trip.flight.flightinfo_set.get(status='Departure').airport_code,
-                'destination': trip.flight.flightinfo_set.get(status='Arrival').airport_code,
-                'usertripslug': trip.slug
-            }
-            cards.append(card)
+        try:
+            for trip in latest_cards:
+                card = {
+                    'photo_url': trip.flight.airframe.photo,
+                    'flight_number': trip.flight.flight_number,
+                    'date': trip.flight.date,
+                    'passenger': trip.passenger.username,
+                    'airline': trip.flight.airframe.airline.name,
+                    'aircraft_type': ' '.join((trip.flight.airframe.aircraft_type.manufacturer,
+                                               trip.flight.airframe.aircraft_type.generic_type)),
+                    'departure': trip.flight.flightinfo_set.get(status='Departure').airport_code,
+                    'destination': trip.flight.flightinfo_set.get(status='Arrival').airport_code,
+                    'usertripslug': trip.slug
+                }
+                cards.append(card)
+        except:
+            pass
 
         return cards
 

@@ -2,8 +2,10 @@ import os
 import shutil
 
 from django.dispatch import receiver
-from django.db.models.signals import pre_save, post_delete
-from flights.models import Airframe, TrackImage, Meal
+from django.db.models.signals import pre_save, post_delete, pre_delete
+from .models import Airframe, TrackImage, Meal
+
+from .models import UserTrip, Flight
 
 
 @receiver(pre_save, sender=Airframe)
@@ -42,13 +44,11 @@ def delete_image(sender, instance, **kwargs):
 
         # Удаление папок рекурсивно, если они стали пустыми
         folder_path = os.path.dirname(image_path)
-        print(image_path)
+
 
         while not os.listdir(folder_path):
             parent_folder = os.path.dirname(folder_path)
-            print(parent_folder)
+
             os.rmdir(folder_path)
 
             folder_path = parent_folder
-            print(folder_path)
-

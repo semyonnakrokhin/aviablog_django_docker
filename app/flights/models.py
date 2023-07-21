@@ -41,7 +41,6 @@ class Airframe(models.Model):
     serial_number = models.CharField(
         max_length=50,
         verbose_name='Серийный номер',
-        unique=True,
         blank=True,
         null=True
     )
@@ -79,6 +78,7 @@ class Airframe(models.Model):
     class Meta:
         verbose_name = 'Воздушное судно'
         verbose_name_plural = 'Воздушные судна'
+        unique_together = ('serial_number', 'registration_number')
 
     def __str__(self):
         return f'Борт {self.registration_number}'
@@ -176,6 +176,13 @@ class Flight(models.Model):
     def __str__(self):
         return f'Совершенный полет {self.flight_number}/{self.date}'
 
+    def delete(self, using=None, keep_parents=False):
+        airframe = self.airframe
+        other_flight_count = Flight.objects.filter(airframe=airframe).exclude(pk=self.pk).count()
+        if other_flight_count == 0:
+            airframe.delete(using=using, keep_parents=keep_parents)
+        super(Flight, self).delete(using=using, keep_parents=keep_parents)
+
 
 class UserTrip(models.Model):
     flight = models.ForeignKey(
@@ -225,6 +232,13 @@ class UserTrip(models.Model):
 
     def __str__(self):
         return f"Путешествие {self.flight.flight_number}-{self.flight.date}-{self.passenger.username}"
+
+    def delete(self, using=None, keep_parents=False):
+        flight = self.flight
+        other_usertrip_count = UserTrip.objects.filter(flight=flight).exclude(pk=self.pk).count()
+        if other_usertrip_count == 0:
+            flight.delete(using=using, keep_parents=keep_parents)
+        super(UserTrip, self).delete(using=using, keep_parents=keep_parents)
 
 
 class TrackImage(models.Model):
