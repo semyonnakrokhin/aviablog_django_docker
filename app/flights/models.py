@@ -40,15 +40,11 @@ class Airline(models.Model):
 class Airframe(models.Model):
     serial_number = models.CharField(
         max_length=50,
-        verbose_name='Серийный номер',
-        blank=True,
-        null=True
+        verbose_name='Серийный номер'
     )
     registration_number = models.CharField(
         max_length=50,
-        verbose_name='Регистрационный номер',
-        blank=True,
-        null=True
+        verbose_name='Регистрационный номер'
     )
 
     def get_airframe_image_path(self, filename):
