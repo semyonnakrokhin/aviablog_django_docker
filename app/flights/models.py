@@ -115,7 +115,8 @@ class FlightInfo(models.Model):
         null=True
     )
     is_boarding_bridge = models.BooleanField(
-        verbose_name='Через телетрап'
+        verbose_name='Через телетрап',
+        default=False
     )
     schedule_time = models.TimeField(
         verbose_name='Время рассчетное',
@@ -203,7 +204,9 @@ class UserTrip(models.Model):
         null=True
     )
     comments = models.TextField(
-        verbose_name='Комментарии'
+        verbose_name='Комментарии',
+        blank=True,
+        null=True
     )
     price = models.PositiveIntegerField(
         verbose_name='Цена билета',
