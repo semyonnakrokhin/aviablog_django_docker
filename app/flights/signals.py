@@ -24,6 +24,7 @@ def delete_previous_photo(sender, instance, **kwargs):
         except sender.DoesNotExist:
             pass
 
+
 @receiver(post_delete, sender=Airframe)
 @receiver(post_delete, sender=TrackImage)
 @receiver(post_delete, sender=Meal)
@@ -52,3 +53,5 @@ def delete_image(sender, instance, **kwargs):
             os.rmdir(folder_path)
 
             folder_path = parent_folder
+
+    return folder_path

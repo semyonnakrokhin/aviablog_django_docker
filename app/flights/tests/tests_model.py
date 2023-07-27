@@ -45,7 +45,7 @@ class Settings(TestCase):
             registration_number='RA-85729',
             photo=SimpleUploadedFile("test.jpg", b"file_content"),
             aircraft_type=cls.aircraft_type,
-            airline=cls.airline,
+            airline=cls.airline
         )
 
         cls.flight = Flight.objects.create(
