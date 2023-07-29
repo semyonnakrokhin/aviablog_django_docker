@@ -69,11 +69,11 @@ class PassengerService:
         passengers_data = User.objects \
             .values('username', 'first_name', 'last_name') \
             .annotate(
-            total_airlines=Count('usertrip__flight__airframe__airline', distinct=True),
-            total_aircraft_types=Count('usertrip__flight__airframe__aircraft_type', distinct=True),
-            total_airports=Count('usertrip__flight__flightinfo__airport_code', distinct=True),
-            total_flights=Count('usertrip', distinct=True)
-        ).order_by('username')
+                total_airlines=Count('usertrip__flight__airframe__airline', distinct=True),
+                total_aircraft_types=Count('usertrip__flight__airframe__aircraft_type', distinct=True),
+                total_airports=Count('usertrip__flight__flightinfo__airport_code', distinct=True),
+                total_flights=Count('usertrip', distinct=True)
+            ).order_by('username')
 
         return passengers_data
 
@@ -157,7 +157,7 @@ class FlightDetailService:
             'departure_info': departure_info,
             'arrival_info': arrival_info,
 
-            'departure_airport_code': departure_info.airport_code ,
+            'departure_airport_code': departure_info.airport_code,
             'departure_gate': departure_info.gate,
             'departure_is_boarding_bridge': departure_info.is_boarding_bridge,
             'departure_schedule_time': departure_info.schedule_time,
@@ -165,7 +165,7 @@ class FlightDetailService:
             'departure_runway': departure_info.runway,
             'departure_metar': departure_info.metar,
 
-            'arrival_airport_code': arrival_info.airport_code ,
+            'arrival_airport_code': arrival_info.airport_code,
             'arrival_gate': arrival_info.gate,
             'arrival_is_boarding_bridge': arrival_info.is_boarding_bridge,
             'arrival_schedule_time': arrival_info.schedule_time,
