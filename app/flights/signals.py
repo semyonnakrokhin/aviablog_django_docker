@@ -54,4 +54,4 @@ def delete_image(sender, instance, **kwargs):
 
             folder_path = parent_folder
 
-    return folder_path
+        return folder_path

@@ -12,30 +12,33 @@ class FlightInformationService:
 
     @staticmethod
     def get_latest_cards(max_count=6):
-        latest_cards = UserTrip.objects \
-                           .select_related('passenger', 'flight__airframe__aircraft_type', 'flight__airframe__airline') \
-                           .prefetch_related('flight__flightinfo_set') \
-                           .order_by('-id')[:max_count]
+        try:
+            latest_cards = UserTrip.objects \
+                               .select_related('passenger', 'flight__airframe__aircraft_type', 'flight__airframe__airline') \
+                               .prefetch_related('flight__flightinfo_set') \
+                               .order_by('-id')[:max_count]
+        except Exception:
+            return []
+
+        if not latest_cards:
+            latest_cards = []
 
         cards = []
 
-        try:
-            for trip in latest_cards:
-                card = {
-                    'photo_url': trip.flight.airframe.photo,
-                    'flight_number': trip.flight.flight_number,
-                    'date': trip.flight.date,
-                    'passenger': trip.passenger.username,
-                    'airline': trip.flight.airframe.airline.name,
-                    'aircraft_type': ' '.join((trip.flight.airframe.aircraft_type.manufacturer,
-                                               trip.flight.airframe.aircraft_type.generic_type)),
-                    'departure': trip.flight.flightinfo_set.get(status='Departure').airport_code,
-                    'destination': trip.flight.flightinfo_set.get(status='Arrival').airport_code,
-                    'usertripslug': trip.slug
-                }
-                cards.append(card)
-        except:
-            pass
+        for trip in latest_cards:
+            card = {
+                'photo_url': trip.flight.airframe.photo,
+                'flight_number': trip.flight.flight_number,
+                'date': trip.flight.date,
+                'passenger': trip.passenger.username,
+                'airline': trip.flight.airframe.airline.name,
+                'aircraft_type': ' '.join((trip.flight.airframe.aircraft_type.manufacturer,
+                                           trip.flight.airframe.aircraft_type.generic_type)),
+                'departure': trip.flight.flightinfo_set.get(status='Departure').airport_code,
+                'destination': trip.flight.flightinfo_set.get(status='Arrival').airport_code,
+                'usertripslug': trip.slug
+            }
+            cards.append(card)
 
         return cards
 
