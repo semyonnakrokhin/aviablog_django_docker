@@ -19,6 +19,7 @@ from pprint import pprint
 load_dotenv()
 
 # AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_URL = '/signup/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

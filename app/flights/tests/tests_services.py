@@ -3,17 +3,19 @@ from unittest.mock import patch
 
 from django.db.models import QuerySet
 
+
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "aviablog.settings")
 import django
 
 django.setup()
 
-from test_mixins import UploadDataMixin
+from test_mixins.test_data_upload import TemproaryMediaRootMixin, UploadDataMixin
 from flights.services import FlightInformationService, PassengerService, PassengerProfileService, FlightDetailService
 from flights.models import UserTrip
 
 
-class FlightInformationServiceTest(UploadDataMixin):
+class FlightInformationServiceTest(TemproaryMediaRootMixin, UploadDataMixin):
 
     def test_get_latest_cards(self):
 
@@ -71,7 +73,7 @@ class FlightInformationServiceTest(UploadDataMixin):
             self.assertEqual(info['value'], value)
 
 
-class PassengerServiceTest(UploadDataMixin):
+class PassengerServiceTest(TemproaryMediaRootMixin, UploadDataMixin):
 
     def test_get_all_passengers_with_statistic(self):
         passengers_data = PassengerService.get_all_passengers_with_statistic()
@@ -89,7 +91,7 @@ class PassengerServiceTest(UploadDataMixin):
             self.assertIn('total_flights', passenger)
 
 
-class PassengerProfileServiceTest(UploadDataMixin):
+class PassengerProfileServiceTest(TemproaryMediaRootMixin, UploadDataMixin):
 
     def test_get_profile_information(self):
         profile_info = PassengerProfileService.get_profile_information('test_user_1')
@@ -104,7 +106,7 @@ class PassengerProfileServiceTest(UploadDataMixin):
         self.assertTrue(all(hasattr(ut.flight, 'flight_number') for ut in passenger_flights))
 
 
-class FlightDetailServiceTest(UploadDataMixin):
+class FlightDetailServiceTest(TemproaryMediaRootMixin, UploadDataMixin):
 
     def test_get_flight_details(self):
 
@@ -164,7 +166,7 @@ class FlightDetailServiceTest(UploadDataMixin):
         for key in required_keys_flight_dict:
             self.assertIn(key, flight_dict, f"Key '{key}' not found in flight_dict")
 
-        required_keys_files = files_keys = [
+        required_keys_files = [
             'airframe_photo',
             'meal_photo',
         ]

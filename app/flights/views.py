@@ -3,7 +3,7 @@ from django.db.models import Count, Prefetch
 from django.forms import modelformset_factory
 from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, FormView, UpdateView, DeleteView
@@ -31,9 +31,7 @@ class HomeView(ListView):
 class PassengersView(ListView):
     template_name = 'flights/passengers.html'
     context_object_name = 'passengers'
-
-    def get_queryset(self):
-        return PassengerService.get_all_passengers_with_statistic()
+    queryset = PassengerService.get_all_passengers_with_statistic()
 
 
 class ProfileView(DetailView):
@@ -93,18 +91,17 @@ class FlightDeleteView(IsOwnerPermissionMixin, DeleteView):
 class FlightUpdateView(IsOwnerPermissionMixin, View):
     template_name = 'flights/add_flight.html'
     form_class = AddFlightForm
+    formset_class = modelformset_factory(TrackImage, form=TrackImageForm, fields=('track_img',), extra=10)
 
     def get_passenger(self):
         data, _, _ = FlightDetailService.get_flight_details(self.kwargs['usertripslug'])
         return data.get('user')
 
     def get(self, request, usertripslug):
-        data, files, id_dict = FlightDetailService.get_flight_details(usertripslug)
-        track_images_in_db = data.get('track_images')
+        data, files, _ = FlightDetailService.get_flight_details(usertripslug)
 
-        TrackImageFormset = modelformset_factory(TrackImage, form=TrackImageForm, fields=('track_img',), extra=10)
-        formset = TrackImageFormset(queryset=track_images_in_db)
-        form = AddFlightForm(initial={**data, **files})
+        formset = self.formset_class(queryset=data.get('track_images'))
+        form = self.form_class(initial={**data, **files})
 
         context = {
             'form': form,
@@ -116,7 +113,12 @@ class FlightUpdateView(IsOwnerPermissionMixin, View):
         return render(request, self.template_name, context=context)
 
     def get_files(self, request, usertripslug: str):
-        _, files, _ = FlightDetailService.get_flight_details(usertripslug)
+        '''In case a field has an image uploaded and we want to delete it by checking 'clear'-box
+        we need to delete this image from request.FILES (actually collect new dict 'files' where there is no this image)
+        because with case is not processed by Django automatically (Or I couldn't find how to do this).
+        Image deletion is in form class'''
+
+        _, files, __ = FlightDetailService.get_flight_details(usertripslug)
 
         files_copy = files.copy()
         for field_name, file in files_copy.items():
@@ -127,21 +129,20 @@ class FlightUpdateView(IsOwnerPermissionMixin, View):
         return files
 
     def post(self, request, usertripslug):
-        _, files, id_dict = FlightDetailService.get_flight_details(usertripslug)
+        _, __, id_dict = FlightDetailService.get_flight_details(usertripslug)
 
-        form = AddFlightForm(data=request.POST, files=self.get_files(request, usertripslug))
-        TrackImageFormset = modelformset_factory(TrackImage, form=TrackImageForm, fields=('track_img',), extra=10)
-        formset = TrackImageFormset(request.POST or None, request.FILES or None)
+        form = self.form_class(data=request.POST, files=self.get_files(request, usertripslug))
+        formset = self.formset_class(request.POST or None, request.FILES or None)
 
         if form.is_valid() and formset.is_valid():
 
             with transaction.atomic():
+                # Обновляется вся информация, которая есть по всем id-шникам
                 trip = form.save(user=request.user, **id_dict)
 
                 for index, f in enumerate(formset):
                     if f.cleaned_data:
 
-                        pprint(f.cleaned_data)
                         if f.cleaned_data.get('id') is None:
                             # Мы загрузили новое изображение в форму
 
@@ -180,19 +181,31 @@ class AddFlightView(LoginRequiredMixin, FormView):
     template_name = 'flights/add_flight.html'
     success_url = reverse_lazy('home')
 
-    def form_valid(self, form):
+    def form_invalid(self, form, formset):
+        return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
-        formset = self.formset_class(self.request.POST or None, self.request.FILES or None)
+    def form_valid(self, form, formset):
+        with transaction.atomic():
+            trip = form.save(user=self.request.user)
+            for f in formset:
+                if f.cleaned_data:
+                    track_image_instance = f.save(trip=trip)
+                    track_image_instance.save()
 
-        if formset.is_valid():
-            with transaction.atomic():
-                trip = form.save(user=self.request.user)
-                for f in formset:
-                    if f.cleaned_data:
-                        track_image_instance = f.save(trip=trip)
-                        track_image_instance.save()
+        return super().form_valid(form)
 
-            return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: instantiate a form instance with the passed
+        POST variables and then check if it's valid.
+        """
+        form = self.get_form()
+        formset = self.formset_class(request.POST or None, request.FILES or None)
+
+        if form.is_valid() and formset.is_valid():
+            return self.form_valid(form, formset)
+        else:
+            return self.form_invalid(form, formset)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

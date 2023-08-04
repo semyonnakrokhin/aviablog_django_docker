@@ -9,17 +9,67 @@ django.setup()
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db.models.signals import pre_save, post_delete
 
-from flights.models import Airframe, TrackImage, Meal, Airline, UserTrip, Flight
-from flights.tests.tests_model import Settings
+from flights.models import Airframe, TrackImage, Meal, Airline, UserTrip, Flight, FlightInfo, AircraftType
+from flights.tests.tests_model import TemproaryMediaRootMixin
 from django.contrib.auth import get_user_model
 
 UserClass = get_user_model()
 
 
-class SettingsMixin(Settings):
+class SettingsMixin(TemproaryMediaRootMixin):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+
+        cls.aircraft_type = AircraftType.objects.create(
+            manufacturer='Tupolev',
+            generic_type='Tu-154M'
+        )
+        cls.airline = Airline.objects.create(
+            name='KrasAir'
+        )
+
+        cls.airframe = Airframe.objects.create(
+            serial_number='SN12345',
+            registration_number='RA-85729',
+            photo=SimpleUploadedFile("test.jpg", b"file_content"),
+            aircraft_type=cls.aircraft_type,
+            airline=cls.airline
+        )
+
+        cls.flight = Flight.objects.create(
+            flight_number='KJC542',
+            airframe=cls.airframe,
+            date='2023-07-26',
+            flight_time=time(hour=3, minute=45),
+        )
+
+        cls.user = UserClass.objects.create(
+            username='test_user',
+            email='test_email@mail.ru',
+            password='spotting'
+        )
+
+        cls.usertrip = UserTrip.objects.create(
+            flight=cls.flight,
+            passenger=cls.user,
+            seat='22D',
+            neighbors='xxx',
+            comments='yyy',
+            price=10000
+        )
+
+        cls.flight_info_dep = FlightInfo.objects.create(
+            flight=cls.flight,
+            status='Departure',
+            airport_code='KJA',
+            metar='MEATR at KJA',
+            gate='9B',
+            is_boarding_bridge=True,
+            schedule_time="12:30",
+            actual_time="13:00",
+            runway='29'
+        )
 
         cls.track_image = TrackImage.objects.create(
             trip=cls.usertrip,

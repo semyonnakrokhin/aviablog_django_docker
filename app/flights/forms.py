@@ -30,7 +30,6 @@ class MyFormMixin:
             if isinstance(value, InMemoryUploadedFile):
                 del data_without_photo[key]
 
-        print(data, data_without_photo, sep='\n')
         return data_without_photo
 
 
@@ -41,7 +40,7 @@ class MyFormMixin:
             try:
                 # Попытка получить запись с использованием урезанного словаря data_without_photo
                 instance = model.objects.get(**self.get_data_without_files(data))
-            except ObjectDoesNotExist:
+            except Exception:
                 # Создаем новую запись, т.к. в бд нет такой записи
                 instance = model.objects.create(**data)
 
@@ -55,7 +54,7 @@ class MyFormMixin:
                 else:
                     # Удаляем существующую запись. Если словарь data пустой, то это delete
                     instance.delete()
-            except ObjectDoesNotExist:
+            except Exception:
                 # Запись не найдена
                 instance = None
 

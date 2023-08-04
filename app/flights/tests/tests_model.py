@@ -1,5 +1,7 @@
 import os
 
+
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "aviablog.settings")
 import django
 
@@ -18,19 +20,16 @@ from aviablog import settings
 import shutil
 import tempfile
 from datetime import time
-
-tmp_dir = tempfile.mkdtemp(dir=settings.BASE_DIR)
+from test_mixins.test_data_upload import TemproaryMediaRootMixin
 
 UserClass = get_user_model()
 
 
-@override_settings(MEDIA_ROOT=tmp_dir)
-class Settings(TestCase):
+class Settings(TemproaryMediaRootMixin):
 
     @classmethod
     def setUpClass(cls) -> None:
         super().setUpClass()
-        cls.media_root = tmp_dir
 
         cls.aircraft_type = AircraftType.objects.create(
             manufacturer='Tupolev',
@@ -81,11 +80,6 @@ class Settings(TestCase):
             actual_time="13:00",
             runway='29'
         )
-
-    @classmethod
-    def tearDownClass(cls) -> None:
-        super().tearDownClass()
-        shutil.rmtree(cls.media_root)
 
 
 class AircraftTypeTest(TestCase):
